@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love You Papa</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background-color:lightpink;
+    overflow-x:hidden;
+}
+
+/* Home */
+.homepage{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+button{
+    background:#ff69b4;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    font-size:24px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* Image Section */
+.image-section{
+    display:none;
+    min-height:200vh; /* REQUIRED FOR SCROLL */
+    position:relative;
+    padding-top:100px;
+}
+
+/* Centered Image */
+.image-wrapper{
+    display:flex;
+    justify-content:center;
+    position:sticky;
+    top:100px;
+}
+
+.image-wrapper img{
+    width:60%;
+    max-width:500px;
+    border-radius:20px;
+    opacity:0;
+    animation:fadeIn 2s ease forwards;
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Message Overlay */
+.message-text{
+    max-width:800px;
+    margin:600px auto 0;
+    padding:25px;
+    background:rgba(0,0,0,0.65);
+    color:white;
+    border-radius:15px;
+    text-align:center;
+    font-size:18px;
+    line-height:1.7;
+    opacity:0;
+    transform:translateY(50px);
+    transition:1.2s ease;
+}
+
+/* Reveal on scroll */
+.message-text.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@keyframes fadeIn{
+    to{opacity:1}
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .image-wrapper img{
+        width:85%;
+    }
+    .message-text{
+        font-size:16px;
+        margin-top:500px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="homepage" id="homepage">
+    <button id="loveButton">Love You Papa</button>
+</div>
+
+<div class="image-section" id="imageSection">
+    <div class="image-wrapper">
+        <img src="papa.jpg" alt="Papa">
+    </div>
+
+    <div class="message-text" id="messageText">
+       <p>PAPA EDI NEKOSAME NAK TELSU NUV NA KOSAM CHALA CHESAV.</p>
+      <p>NENU ENTHA ARICHINA URKUNAV, NENU EM ANA PADDAV, NA INSECURITIES NE POKOTAV.</p>
+      <p>NENU NINNU CHALA BADHA PETTA KANI I LOVE YOU SO MUCH MORE THAN YOU KNOW.</p>
+      <p>NENU LIFE LO CHESINA BEST PANI NINNU ACCEPT CHEYATAM, KANI ADI NINNU ENTHA BADHA PEDTHADI ANUKOLEDHU.</p>
+      <p>365 DAYS DONE AND LETS WELCOME ANOTHER 365 DAYS IN WHICH WE MAY FIGHT, HAVE TOUGH DAYS, BUT MY LOVE FOR YOU WILL BE THE SAME AS IT IS ON THE FIRST DAY.</p>
+      <p>E YEAR ANA NINNU AVARU ANA LIKITH THO HAPPY GA UNAVA ANTE NE DEGARA OKA ANSWER UNDELA CHESTHA ANI ANUKUNTUNA.</p>
+      <div class="line2">LOVE YOU PAPA ❤️</div>
+    </div>
+</div>
+
+<script>
+const btn=document.getElementById("loveButton");
+const home=document.getElementById("homepage");
+const section=document.getElementById("imageSection");
+const msg=document.getElementById("messageText");
+
+btn.onclick=()=>{
+    home.style.display="none";
+    section.style.display="block";
+    window.scrollTo(0,0);
+};
+
+window.addEventListener("scroll",()=>{
+    const rect=msg.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100){
+        msg.classList.add("visible");
+    }
+});
+</script>
+
+</body>
+</html>
